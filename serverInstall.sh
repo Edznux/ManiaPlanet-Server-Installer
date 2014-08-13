@@ -27,12 +27,12 @@ setup()
 	then
 		cp ./UserData/Config/dedicated_cfg.default.txt ./UserData/Config/dedicated_cfg.txt
 		#sed -i '/\<password\>\<\/password\>/c\<\password\>$server_pass\<\/password\>' ./UserData/Config/dedicated_cfg.default.txt
-		xmlstarlet ed -S -P -L -u "/dedicated/masterserver_account/login" -v $server_login  ./UserData/Config/dedicated_cfg.txt
-		xmlstarlet ed -S -P -L -u "/dedicated/masterserver_account/password" -v $server_pass  ./UserData/Config/dedicated_cfg.txt
-		xmlstarlet ed -S -P -L -u "/dedicated/masterserver_account/validation_key" -v $server_key  ./UserData/Config/dedicated_cfg.txt
-	        xmlstarlet ed -S -P -L -u "/dedicated/server_options/name" -v $server_name  ./UserData/Config/dedicated_cfg.txt
-	        xmlstarlet ed -S -P -L -u "/dedicated/server_options/comment" -v $server_description  ./UserData/Config/dedicated_cfg.txt
-		xmlstarlet ed -S -P -L -u  "/dedicated/server_options/title" -v $server_game ./UserData/Config/dedicated_cfg.txt
+		xmlstarlet ed  -P -L -u "/dedicated/masterserver_account/login" -v $server_login  ./UserData/Config/dedicated_cfg.txt
+		xmlstarlet ed  -P -L -u "/dedicated/masterserver_account/password" -v $server_pass  ./UserData/Config/dedicated_cfg.txt
+		xmlstarlet ed  -P -L -u "/dedicated/masterserver_account/validation_key" -v $server_key  ./UserData/Config/dedicated_cfg.txt
+		xmlstarlet ed  -P -L -u "/dedicated/server_options/name" -v $server_name  ./UserData/Config/dedicated_cfg.txt
+		xmlstarlet ed  -P -L -u "/dedicated/server_options/comment" -v $server_description  ./UserData/Config/dedicated_cfg.txt
+		xmlstarlet ed  -P -L -u  "/dedicated/server_options/title" -v $server_game ./UserData/Config/dedicated_cfg.txt
 
 	else
 		echo "Setup reset, please provide your right information"
@@ -50,7 +50,7 @@ adv_conf()
                 if [ "$SuperAdmin_pass" == "" ];then
                         echo "Password not modified"
                 else
-                        xmlstarlet ed -S -P -L -u  '/dedicated/authorization_levels/level/[name="SuperAdmin"]/password' -v $SuperAdmin__pass ./UserData/Config/dedicated_cfg.txt
+                        xmlstarlet ed  -P -L -u  '/dedicated/authorization_levels/level/[name="SuperAdmin"]/password' -v $SuperAdmin__pass ./UserData/Config/dedicated_cfg.txt
                 fi
 	#Admin password
                 read -p "Change Admin password (Hightly recommended): " Admin_pass
@@ -58,7 +58,7 @@ adv_conf()
                         echo "Password not modified"
                 else
                         ##TODO
- 			xmlstarlet ed -S -P -L -u  '/dedicated/authorization_levels/level/[name="Admin"]/password' -v $Admin__pass ./UserData/Config/dedicated_cfg.txt
+ 						xmlstarlet ed  -P -L -u  '/dedicated/authorization_levels/level/[name="Admin"]/password' -v $Admin__pass ./UserData/Config/dedicated_cfg.txt
                         #xmlstarlet ed -L -u  "/dedicated/server_options" -v $join_pass ./UserData/Config/dedicated_cfg.txt
                 fi
 
@@ -67,7 +67,7 @@ adv_conf()
 		if [ "$join_pass" == "" ];then
 			echo "Password not modified"
 		else
-			xmlstarlet ed -S -P -L -u  "/dedicated/server_options/password" -v $join_pass ./UserData/Config/dedicated_cfg.txt
+			xmlstarlet ed  -P -L -u  "/dedicated/server_options/password" -v $join_pass ./UserData/Config/dedicated_cfg.txt
 		fi
 	#players slots
                 read -p "Set players max slost: " players_max_slot
@@ -75,7 +75,7 @@ adv_conf()
                         echo "Players slots not modified"
                 else
 			##TODO
-                        xmlstarlet ed -S -P -L -u  "/dedicated/server_options/max_players" -v $players_max_slot ./UserData/Config/dedicated_cfg.txt
+                	xmlstarlet ed  -P -L -u  "/dedicated/server_options/max_players" -v $players_max_slot ./UserData/Config/dedicated_cfg.txt
 		  fi
 	#spectator slots
                 read -p "Set spectator slots: " spec__max_slot
@@ -83,7 +83,7 @@ adv_conf()
                         echo "Spectator slots not modified"
                 else
                         ##TODO
-			xmlstarlet ed -S -P -L -u  "/dedicated/server_options/max_spectators" -v $spec_max_slot ./UserData/Config/dedicated_cfg.txt
+					xmlstarlet ed  -P -L -u  "/dedicated/server_options/max_spectators" -v $spec_max_slot ./UserData/Config/dedicated_cfg.txt
                        	#xmlstarlet ed -L -u  "/dedicated/server_options" -v $join_pass ./UserData/Config/dedicated_cfg.txt
                 fi
 	fi
@@ -134,10 +134,7 @@ then
 	echo ""
         setup
         adv_conf
-
 else
-
 	echo "exiting"
-
 fi
 

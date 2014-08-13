@@ -1,8 +1,7 @@
 #ManiaPanet Server Installer
 
-
 ##Getting started
----
+
 This script provide an simple installer for **ManiaPlanet** servers ( Shootmania and Trackmania 2 )
 
 ***First, you need to install xmlstarlet***
@@ -19,7 +18,7 @@ Finally launch the script and follow prompted instruction by enter this:
 >./serverInstall.sh
 
 ##TODO
----
+
 * Addons/Plugins installations support.
 * Maps imports.
 
